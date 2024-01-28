@@ -15,6 +15,7 @@ function startCountdown() {
     if (seconds === 0) {
       clearInterval(timerInterval);
       timerDisplay.textContent = "Time's up!";
+      displaySpeed();
     } else {
       seconds--;
     }
@@ -23,4 +24,15 @@ function startCountdown() {
   updateTimer();
 
   const timerInterval = setInterval(updateTimer, 1000);
+}
+function displaySpeed() {
+  var speed = Math.floor(
+    document.querySelector("#textbox").value.length / 1.25
+  );
+  document.querySelector("#speed").innerHTML = speed + "WPM";
+  document.querySelector("#restart").style.display = "inline-block";
+}
+function restart() {
+  document.querySelector("#restart").style.display = "none";
+  location.reload();
 }
