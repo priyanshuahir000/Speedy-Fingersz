@@ -1,3 +1,23 @@
+class Text {
+  constructor() {
+    this.raw_string =
+      "with jack was a bad idea she had tried to move on after their breakup but found herself constantly drawn back to him the chemistry between them was undeniable but so was reality they both knew that getting back together would only lead to more pain down the road sarah couldnt ignore her feelings any longer though she wanted jack back with everything she had as she walked into his arms once again that night at the bar she knew she was taking a risk but she couldnt resist his touch their kiss was electric it was everything she remembered it being but also something new sarah felt alive again as they parted ways that night sarah knew that she couldnt keep ignoring reality she had to make a decision she couldnt keep playing with fire she couldnt keep putting herself through this pain but she also couldnt deny her feelings sarah knew that she loved jack she knew that she wanted him back but she also knew that it wouldnt be easy they both had baggage they both had wounds that needed to heal sarah didnt know how to fix things between them she didnt know how to make it work but she also knew that she couldnt keep living in limbo she had to make a choice as she walked into her apartment that night sarah couldnt help but feel lost she didnt know what to do she didnt know what to say she just knew that she couldnt keep living in this state of uncertainty any longer she needed closure she needed answers sarah knew that she had one last chance with jack she had one last chance at happiness with him but she also knew that it wouldnt be easy she had one last chance at love with him but also one last chance at heartbreak sarah took a deep breath and picked up her phone she dialed jacks number she didnt know what she was going to say but she knew that she had to say something she had to make a decision she had to take a chance as she waited for jack to answer the phone sarah couldnt help but feel a mix of emotions she felt hopeful but also scared she felt excited but also uncertain she felt alive but also vulnerable sarah knew that she was taking a risk but she also knew that she couldnt keep living in limbo any longer she had to make a choice she had to take a chance she had to be brave as she spoke to jack on the phone that night sarah knew that she was making the right decision she knew that she was taking a chance at love but also a chance at happiness she knew that she was being brave but also vulnerable she knew that she was taking a risk but also a chance at a future with jack sarah hung up the phone that night feeling a mix of emotions she felt hopeful but also scared she felt excited but also uncertain she felt alive but also vulnerable but she also felt something else she felt loved she felt wanted she felt appreciated sarah knew that she had made the right decision she had taken a chance at love with jack she had taken a chance at happiness and she knew that no matter what happened between them she would always cherish this moment this moment of bravery of vulnerability of love this moment that changed everything over the next few weeks sarah and jack spent every moment they could together they went on dates took long walks in the park and talked for hours on end sarah felt like she was living in a dream she felt like she had finally found her happy ending but she also knew that things werent perfect they both had their issues to work through sarah struggled with trusting jack again after their past breakup jack struggled with his own insecurities and fears about being vulnerable again but they both knew that they loved each other deeply and were willing to work through their issues for the sake of their relationship one night as they sat on sarahs couch watching a movie jack turned to her and took her hand in his sarah looked at him with a mix of emotions she felt love but also fear she knew that they still had a lot of work to do but she also knew that she loved him and was willing to take that chance jack leaned in and kissed her deeply sarah felt her heart race as she responded to his touch they both knew that they had taken a chance at love but they also knew that it was worth it as they lay in bed together that night sarah felt a sense of peace wash over her she felt like everything was finally falling into place she felt like she had finally found her happy ending but she also knew that there would be challenges ahead she knew that they would have to work through their issues together but she also knew that they had each others backs they had each others love they had each others trust and they had each others hope for a future together as sarah drifted off to sleep that night she felt a sense of contentment wash over her she felt like everything was finally falling into place she felt like she had finally found her happy ending and she knew that no matter what challenges lay ahead she would always cherish this moment this moment of bravery of vulnerability of love this moment that changed everything the next day sarah woke up feeling more hopeful than she had in months she knew that there would be challenges ahead but she also knew that she had jack by her side they spent the day together exploring the city trying new restaurants and just enjoying each others company as the sun began to set they found themselves in a quiet park watching the colors of the sky change as the day turned into night sarah felt a sense of peace wash over her as she looked into jacks eyes she knew that she loved him deeply but she also knew that she needed to trust him again jack could sense her hesitation and he took her hand in his once more sarah he said softly i know that i hurt you in the past but i want you to know that i am committed to making things right between us i love you more than anything in this world and i will do whatever it takes to earn back your trust sarah looked into jacks eyes seeing nothing but sincerity and love reflected back at her she knew that she still had doubts but she also knew that she wanted to believe in their love again they spent the rest of the evening talking laughing and just enjoying each others company as they walked back to sarahs apartment sarah felt a sense of hopefulness wash over her once more she knew that they still had a lot of work to do but she also knew that they had each others love and support as they said goodnight sarah felt a sense of contentment wash over her once more she knew that they still had a lot of work to do but she also knew that they had each others love and support she knew that they could face any challenge together as long as they had each others love and trust and she knew that no matter what the future held they would always cherish this moment  this moment of bravery of vulnerability of love  that changed everything for them both";
+  }
+
+  getText() {
+    var text_list = this.raw_string.split(" ");
+    var start = Math.floor(Math.random() * 1000 + 1);
+    var end = start + 300;
+
+    var text_block = text_list.slice(start, end).toString();
+    text_block = text_block.replace(/,/g, " ");
+    return text_block;
+  }
+}
+
+var t = new Text();
+document.querySelector("#random-text").innerHTML = t.getText();
+
 document.querySelector("#textbox").addEventListener(
   "input",
   function () {
@@ -5,6 +25,10 @@ document.querySelector("#textbox").addEventListener(
   },
   { once: true }
 );
+document.querySelector("#textbox").addEventListener("input", function () {
+  startChecking();
+});
+
 function startCountdown() {
   let seconds = 15;
   const timerDisplay = document.querySelector(".seconds");
@@ -25,6 +49,19 @@ function startCountdown() {
 
   const timerInterval = setInterval(updateTimer, 1000);
 }
+
+function startChecking() {
+  var input = document.querySelector("#textbox").value;
+  var p = document.querySelector("#random-text").textContent;
+  for (var i = 0; i < input.length; i++) {
+    if (input[i] == p [i]) {
+      console.log("yes");
+    } else {
+      console.log("no");
+    }
+  }
+}
+
 function displaySpeed() {
   var speed = Math.floor(
     document.querySelector("#textbox").value.length / 1.25

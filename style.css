@@ -4,9 +4,14 @@ body {
     color: #fff;
     margin: 0;
     padding: 0;
+    
+}
+
+.div-1{
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* Center horizontally */
     justify-content: center;
     height: 100vh;
 }
@@ -15,15 +20,26 @@ h1 {
     color: #ffcc00;
     /* Yellow */
     font-size: 2em;
+    margin: 0;
+    /* Remove default margin */
 }
 
 h2 {
     color: #fff;
     font-size: 1.5em;
+    margin: 0;
+    /* Remove default margin */
+}
+
+#random-text {
+    width: 60%;
+    margin: 20px 0;
+    /* Add margin to paragraph */
 }
 
 textarea {
-    width: 300px;
+    width: calc(60% - 20px);
+    /* Adjust width to match paragraph */
     height: 150px;
     font-size: 1em;
     padding: 10px;
