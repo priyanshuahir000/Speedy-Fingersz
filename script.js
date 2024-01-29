@@ -25,9 +25,6 @@ document.querySelector("#textbox").addEventListener(
   },
   { once: true }
 );
-document.querySelector("#textbox").addEventListener("input", function () {
-  startChecking();
-});
 
 function startCountdown() {
   let seconds = 15;
@@ -50,18 +47,45 @@ function startCountdown() {
   const timerInterval = setInterval(updateTimer, 1000);
 }
 
+document.querySelector("#textbox").addEventListener("input", function (event) {
+  if (
+    event.inputType === "deleteContentBackward" ||
+    event.inputType === "deleteContentForward"
+  ) {
+    removeLastSpan();
+  } else {
+    startChecking();
+  }
+});
+
+var i = 0;
+p = 0;
 function startChecking() {
   var input = document.querySelector("#textbox").value;
   var p = document.querySelector("#random-text").textContent;
-  for (var i = 0; i < input.length; i++) {
-    if (input[i] == p [i]) {
-      console.log("yes");
-    } else {
-      console.log("no");
-    }
+  if (input[i] == p[i]) {
+    var span = document.createElement("span");
+    span.textContent = input[i];
+    span.style.color = "yellow";
+    document.querySelector("#answer").appendChild(span);
+  } else {
+    var span = document.createElement("span");
+    span.textContent = input[i];
+    span.style.color = "red";
+    span.style.backgroundColor = "black";
+    document.querySelector("#answer").appendChild(span);
+  }
+  i++;
+  p++;
+}
+function removeLastSpan() {
+  if (i > 0) {
+    i--;
+    p--;
+    var answer = document.querySelector("#answer");
+    answer.removeChild(answer.lastChild);
   }
 }
-
 function displaySpeed() {
   var speed = Math.floor(
     document.querySelector("#textbox").value.length / 1.25
