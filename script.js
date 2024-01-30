@@ -7,7 +7,7 @@ class Text {
   getText() {
     var text_list = this.raw_string.split(" ");
     var start = Math.floor(Math.random() * 1000 + 1);
-    var end = start + 300;
+    var end = start + 75;
 
     var text_block = text_list.slice(start, end).toString();
     text_block = text_block.replace(/,/g, " ");
@@ -15,8 +15,7 @@ class Text {
   }
 }
 
-var t = new Text();
-document.querySelector("#random-text").innerHTML = t.getText();
+document.querySelector("#textbox").focus();
 
 document.querySelector("#textbox").addEventListener(
   "input",
@@ -37,6 +36,7 @@ function startCountdown() {
       clearInterval(timerInterval);
       timerDisplay.textContent = "Time's up!";
       displaySpeed();
+      document.querySelector("#restart").style.display = "inline-block";
     } else {
       seconds--;
     }
@@ -47,53 +47,112 @@ function startCountdown() {
   const timerInterval = setInterval(updateTimer, 1000);
 }
 
-document.querySelector("#textbox").addEventListener("input", function (event) {
-  if (
-    event.inputType === "deleteContentBackward" ||
-    event.inputType === "deleteContentForward"
-  ) {
-    removeLastSpan();
-  } else {
-    startChecking();
-  }
-});
-
-var i = 0;
-p = 0;
-function startChecking() {
-  var input = document.querySelector("#textbox").value;
-  var p = document.querySelector("#random-text").textContent;
-  if (input[i] == p[i]) {
-    var span = document.createElement("span");
-    span.textContent = input[i];
-    span.style.color = "yellow";
-    document.querySelector("#answer").appendChild(span);
-  } else {
-    var span = document.createElement("span");
-    span.textContent = input[i];
-    span.style.color = "red";
-    span.style.backgroundColor = "black";
-    document.querySelector("#answer").appendChild(span);
-  }
-  i++;
-  p++;
-}
-function removeLastSpan() {
-  if (i > 0) {
-    i--;
-    p--;
-    var answer = document.querySelector("#answer");
-    answer.removeChild(answer.lastChild);
-  }
-}
 function displaySpeed() {
-  var speed = Math.floor(
-    document.querySelector("#textbox").value.length / 1.25
-  );
+  var total = correct - wrong;
+  var speed = Math.floor(total / 1.25);
+  if (speed < 0) {
+    speed = 0;
+  }
   document.querySelector("#speed").innerHTML = speed + "WPM";
+  document.querySelector("#correct").innerHTML = correct;
+  document.querySelector("#wrong").innerHTML = wrong;
   document.querySelector("#restart").style.display = "inline-block";
 }
 function restart() {
   document.querySelector("#restart").style.display = "none";
   location.reload();
+}
+
+// var i = 0;
+// p = 0;
+// function startChecking() {
+//   var input = document.querySelector("#textbox").value;
+//   var p = document.querySelector("#random-text").textContent;
+//   if (input[i] == p[i]) {
+//     var span = document.createElement("span");
+//     span.textContent = input[i];
+//     span.style.color = "yellow";
+//     document.querySelector("#answer").appendChild(span);
+//   } else {
+//     var span = document.createElement("span");
+//     span.textContent = input[i];
+//     span.style.color = "red";
+//     span.style.backgroundColor = "black";
+//     document.querySelector("#answer").appendChild(span);
+//   }
+//   i++;
+//   p++;
+// }
+// function removeLastSpan() {
+//   if (i > 0) {
+//     i--;
+//     p--;
+//     var answer = document.querySelector("#answer");
+//     answer.removeChild(answer.lastChild);
+//   }
+// }
+var t = new Text();
+var spanText = t.getText();
+spanText = spanText.split("");
+spanText.forEach((letter) => {
+  var spanLetter = "<span>" + letter + "</span>";
+  document.querySelector("#random-text").innerHTML += spanLetter;
+});
+
+var cursor = 0;
+var correct = 0;
+var wrong = 0;
+document.querySelector("#textbox").addEventListener("input", function (event) {
+  if (
+    event.inputType === "deleteContentBackward" ||
+    event.inputType === "deleteContentForward"
+  ) {
+    cursor--;
+    handelDelete(cursor);
+  } else if (event.inputType === "deleteWordBackward") {
+    var cLength = document.querySelector("#textbox").value.length;
+    for (var i = cLength; i < cursor; i++) {
+      handelDelete(i);
+    }
+    cursor = cLength;
+  } else {
+    startChecking();
+    cursor++;
+  }
+
+  displaySpeed();
+});
+function handelDelete(i) {
+  if (
+    document
+      .querySelector("#random-text")
+      .childNodes[i].classList.contains("wrong")
+  ) {
+    document
+      .querySelector("#random-text")
+      .childNodes[i].classList.remove("wrong");
+    wrong--;
+  } else if (
+    document
+      .querySelector("#random-text")
+      .childNodes[i].classList.contains("correct")
+  ) {
+    document
+      .querySelector("#random-text")
+      .childNodes[i].classList.remove("correct");
+    correct--;
+  } else {
+    return;
+  }
+}
+function startChecking() {
+  var a = document.querySelector("#textbox").value;
+  var b = document.querySelector("#random-text");
+  if (a[cursor] == b.childNodes[cursor].textContent) {
+    b.childNodes[cursor].classList.add("correct");
+    correct++;
+  } else if (a[cursor] != b.childNodes[cursor].textContent) {
+    b.childNodes[cursor].classList.add("wrong");
+    wrong++;
+  }
 }

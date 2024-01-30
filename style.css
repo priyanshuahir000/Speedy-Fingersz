@@ -31,16 +31,27 @@ h2 {
     /* Remove default margin */
 }
 
+.playground {
+}
+
 #random-text {
     width: 60%;
     margin: 20px 0;
     /* Add margin to paragraph */
 }
 
+.correct {
+    color: #ffcc00;
+}
+
+.wrong {
+    color: crimson;
+}
+
 textarea {
     width: calc(60% - 20px);
     /* Adjust width to match paragraph */
-    height: 150px;
+    height: 100px;
     font-size: 1em;
     padding: 10px;
     margin: 10px 0;
@@ -85,7 +96,8 @@ h1,
 h2,
 p,
 .seconds,
-textarea {
+textarea,
+.playground {
     animation: fadeIn 1s ease-out;
 }
 
@@ -94,8 +106,46 @@ textarea {
     color: #ffcc00;
     background-color: transparent;
     border: none;
-    margin-left: 5px;
+    margin: 5px;
     text-decoration: underline;
     cursor: pointer;
     font-size: 18px;
-}   
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    background-color: #333;
+    border: 2px solid #ffcc00;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.stats p {
+    margin: 0;
+    text-align: center;
+    color: #fff;
+}
+
+.stats span {
+    font-weight: bold;
+    display: block;
+    font-size: 1.2em;
+    margin-top: 5px;
+}
+
+.stats #speed {
+    color: #ffcc00;
+}
+
+.stats #correct {
+    color: #66ff66;
+    /* Light green for correct */
+}
+
+.stats #wrong {
+    color: #ff6666;
+    /* Light red for wrong */
+}
