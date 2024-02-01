@@ -25,6 +25,7 @@ document.querySelector("#textbox").addEventListener(
   { once: true }
 );
 
+let time = 0;
 function startCountdown() {
   let seconds = 15;
   const timerDisplay = document.querySelector(".seconds");
@@ -37,8 +38,12 @@ function startCountdown() {
       timerDisplay.textContent = "Time's up!";
       displaySpeed();
       document.querySelector("#restart").style.display = "inline-block";
+      document.querySelector("#textbox").value = "Time is up!";
+      document.querySelector("#textbox").setAttribute("disabled", true);
     } else {
+      time++;
       seconds--;
+      displaySpeed();
     }
   }
 
@@ -49,13 +54,15 @@ function startCountdown() {
 
 function displaySpeed() {
   var total = correct - wrong;
-  var speed = Math.floor(total / 1.25);
+  var speed = Math.floor(total / ((time / 60) * 5));
   if (speed < 0) {
     speed = 0;
   }
   document.querySelector("#speed").innerHTML = speed + "WPM";
+  console.log(time);
   document.querySelector("#correct").innerHTML = correct;
   document.querySelector("#wrong").innerHTML = wrong;
+
   document.querySelector("#restart").style.display = "inline-block";
 }
 function restart() {
@@ -119,8 +126,6 @@ document.querySelector("#textbox").addEventListener("input", function (event) {
     startChecking();
     cursor++;
   }
-
-  displaySpeed();
 });
 function handelDelete(i) {
   if (
