@@ -15,6 +15,13 @@ class Text {
   }
 }
 
+var s1 = new Audio("6.mp3");
+s1.preload = "auto";
+
+document.querySelector("#textbox").addEventListener("input", function (event) {
+  s1.currentTime = 0;
+  s1.play();
+});
 document.querySelector("#textbox").focus();
 
 document.querySelector("#textbox").addEventListener(
@@ -59,7 +66,6 @@ function displaySpeed() {
     speed = 0;
   }
   document.querySelector("#speed").innerHTML = speed + "WPM";
-  console.log(time);
   document.querySelector("#correct").innerHTML = correct;
   document.querySelector("#wrong").innerHTML = wrong;
 
@@ -126,6 +132,7 @@ document.querySelector("#textbox").addEventListener("input", function (event) {
     startChecking();
     cursor++;
   }
+  s1.play();
 });
 function handelDelete(i) {
   if (
