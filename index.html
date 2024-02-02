@@ -13,7 +13,10 @@
     <div class="div-1">
         <h1>Speedy Fingersz</h1>
         <h2>Start typing</h2>
-        <p>Time: <span class="seconds">15s</span></p>
+        <p>Time:
+            <button id="seconds-15" class="time active seconds" onclick="toggleTime()">15s</button>
+            <button id="seconds-60" class="time" onclick="toggleTime()">60s</button>
+        </p>
         <p id="random-text"></p>
         <textarea id="textbox" placeholder="start writing...."></textarea>
         <div class="stats">

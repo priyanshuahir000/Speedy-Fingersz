@@ -15,12 +15,31 @@ class Text {
   }
 }
 
-var s1 = new Audio("6.mp3");
-s1.preload = "auto";
+var switches = "mxbrown";
+var backSpace = new Audio("audio/" + switches + "/press/BACKSPACE.mp3");
+var enter = new Audio("audio/" + switches + "/press/ENTER.mp3");
+var space = new Audio("audio/" + switches + "/press/SPACE.mp3");
+var key = new Audio("audio/" + switches + "/press/GENERIC_R0.mp3");
 
-document.querySelector("#textbox").addEventListener("input", function (event) {
-  s1.currentTime = 0;
-  s1.play();
+document.querySelector("#textbox").addEventListener("keyup", function (event) {
+  backSpace.preload = "auto";
+  enter.preload = "auto";
+  space.preload = "auto";
+  key.preload = "auto";
+  switch (event.key) {
+    case "Backspace":
+      backSpace.currentTime = 0;
+      backSpace.play();
+    case " ":
+      space.currentTime = 0;
+      space.play();
+    case "Enter":
+      enter.currentTime = 0;
+      enter.play();
+    default:
+      key.currentTime = 0;
+      key.play();
+  }
 });
 document.querySelector("#textbox").focus();
 
@@ -28,15 +47,43 @@ document.querySelector("#textbox").addEventListener(
   "input",
   function () {
     startCountdown();
+    handelDisable(seconds);
   },
   { once: true }
 );
 
 let time = 0;
+let seconds = 15;
+var t1 = document.querySelector("#seconds-15");
+var t2 = document.querySelector("#seconds-60");
+function handelDisable(s) {
+  if (s == 14) {
+    t1.classList.remove("disable-hover");
+    t1.setAttribute("disabled", "true");
+    t2.classList.add("disable-hover");
+    t2.setAttribute("disabled", "true");
+  } else if (s == 59) {
+    t1.classList.add("disable-hover");
+    t1.setAttribute("disabled", "true");
+    t2.classList.remove("disable-hover");
+    t2.setAttribute("disabled", "true");
+  } else {
+    console.log(s);
+  }
+}
+function toggleTime() {
+  if (t1.classList.contains("active")) {
+    t1.classList.remove("active", "seconds");
+    t2.classList.add("active", "seconds");
+    seconds = 60;
+  } else if (t2.classList.contains("active")) {
+    t1.classList.add("active", "seconds");
+    t2.classList.remove("active", "seconds");
+    seconds = 15;
+  }
+}
 function startCountdown() {
-  let seconds = 15;
-  const timerDisplay = document.querySelector(".seconds");
-
+  var timerDisplay = document.querySelector(".seconds");
   function updateTimer() {
     timerDisplay.textContent = seconds + "s";
 
@@ -132,7 +179,6 @@ document.querySelector("#textbox").addEventListener("input", function (event) {
     startChecking();
     cursor++;
   }
-  s1.play();
 });
 function handelDelete(i) {
   if (

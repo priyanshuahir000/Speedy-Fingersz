@@ -31,8 +31,55 @@ h2 {
     /* Remove default margin */
 }
 
-.playground {
+/* Basic styling for time buttons */
+.time {
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    color: #999;
+    font-weight: bold;
+    background-color: transparent;
+    transition: background-color 0.3s, color 0.3s;
 }
+
+/* Styling for active time button */
+.time.active {
+    background-color: transparent;
+    color: #ffcc00;
+}
+
+/* Animation for time buttons */
+.time:hover {
+    background-color: transparent;
+    color: #ffcc00;
+}
+
+/* Animation for active time button */
+.time.active:hover {
+    background-color: transparent;
+    color: #d1a703;
+}
+
+/* Animation for button press effect */
+.time:active,
+.time.active:active {
+    transform: scale(0.95);
+}
+
+/* Add styles for disabled time buttons */
+.disable-hover {
+    cursor: not-allowed;
+}
+
+/* Styling for disabled time button */
+.disable-hover:hover {
+    color: inherit;
+    cursor: not-allowed;
+
+    /* Preserve the original text color on hover */
+}
+
 
 #random-text {
     width: 60%;
