@@ -7,7 +7,7 @@ class Text {
   getText() {
     var text_list = this.raw_string.split(" ");
     var start = Math.floor(Math.random() * 1000 + 1);
-    var end = start + 75;
+    var end = start + 100;
 
     var text_block = text_list.slice(start, end).toString();
     text_block = text_block.replace(/,/g, " ");
@@ -21,6 +21,49 @@ var enter = new Audio("audio/" + switches + "/press/ENTER.mp3");
 var space = new Audio("audio/" + switches + "/press/SPACE.mp3");
 var key = new Audio("audio/" + switches + "/press/GENERIC_R0.mp3");
 
+var backSpace_release = new Audio(
+  "audio/" + switches + "/release/BACKSPACE.mp3"
+);
+var enter_release = new Audio("audio/" + switches + "/release/ENTER.mp3");
+var space_release = new Audio("audio/" + switches + "/release/SPACE.mp3");
+var key_release = new Audio("audio/" + switches + "/release/GENERIC.mp3");
+
+function changeSwitch() {
+  switches = document.querySelector("#switches").value;
+  backSpace = new Audio("audio/" + switches + "/press/BACKSPACE.mp3");
+  enter = new Audio("audio/" + switches + "/press/ENTER.mp3");
+  space = new Audio("audio/" + switches + "/press/SPACE.mp3");
+  key = new Audio("audio/" + switches + "/press/GENERIC_R0.mp3");
+
+  backSpace_release = new Audio("audio/" + switches + "/release/BACKSPACE.mp3");
+  enter_release = new Audio("audio/" + switches + "/release/ENTER.mp3");
+  space_release = new Audio("audio/" + switches + "/release/SPACE.mp3");
+  key_release = new Audio("audio/" + switches + "/release/GENERIC.mp3");
+}
+
+document
+  .querySelector("#textbox")
+  .addEventListener("keydown", function (event) {
+    backSpace.preload = "auto";
+    enter.preload = "auto";
+    space.preload = "auto";
+    key.preload = "auto";
+    switch (event.key) {
+      case "Backspace":
+        backSpace.currentTime = 0;
+        backSpace.play();
+      case " ":
+        space.currentTime = 0;
+        space.play();
+      case "Enter":
+        enter.currentTime = 0;
+        enter.play();
+      default:
+        key.currentTime = 0;
+        key.play();
+    }
+  });
+
 document.querySelector("#textbox").addEventListener("keyup", function (event) {
   backSpace.preload = "auto";
   enter.preload = "auto";
@@ -28,19 +71,20 @@ document.querySelector("#textbox").addEventListener("keyup", function (event) {
   key.preload = "auto";
   switch (event.key) {
     case "Backspace":
-      backSpace.currentTime = 0;
-      backSpace.play();
+      backSpace_release.currentTime = 0;
+      backSpace_release.play();
     case " ":
-      space.currentTime = 0;
-      space.play();
+      space_release.currentTime = 0;
+      space_release.play();
     case "Enter":
-      enter.currentTime = 0;
-      enter.play();
+      enter_release.currentTime = 0;
+      enter_release.play();
     default:
-      key.currentTime = 0;
-      key.play();
+      key_release.currentTime = 0;
+      key_release.play();
   }
 });
+
 document.querySelector("#textbox").focus();
 
 document.querySelector("#textbox").addEventListener(
@@ -115,42 +159,12 @@ function displaySpeed() {
   document.querySelector("#speed").innerHTML = speed + "WPM";
   document.querySelector("#correct").innerHTML = correct;
   document.querySelector("#wrong").innerHTML = wrong;
-
-  document.querySelector("#restart").style.display = "inline-block";
 }
 function restart() {
   document.querySelector("#restart").style.display = "none";
   location.reload();
 }
 
-// var i = 0;
-// p = 0;
-// function startChecking() {
-//   var input = document.querySelector("#textbox").value;
-//   var p = document.querySelector("#random-text").textContent;
-//   if (input[i] == p[i]) {
-//     var span = document.createElement("span");
-//     span.textContent = input[i];
-//     span.style.color = "yellow";
-//     document.querySelector("#answer").appendChild(span);
-//   } else {
-//     var span = document.createElement("span");
-//     span.textContent = input[i];
-//     span.style.color = "red";
-//     span.style.backgroundColor = "black";
-//     document.querySelector("#answer").appendChild(span);
-//   }
-//   i++;
-//   p++;
-// }
-// function removeLastSpan() {
-//   if (i > 0) {
-//     i--;
-//     p--;
-//     var answer = document.querySelector("#answer");
-//     answer.removeChild(answer.lastChild);
-//   }
-// }
 var t = new Text();
 var spanText = t.getText();
 spanText = spanText.split("");
@@ -214,3 +228,55 @@ function startChecking() {
     wrong++;
   }
 }
+
+const starsContainer = document.getElementById("stars");
+const selectedRatingElement = document.getElementById("selectedRating");
+let selectedRating = 0;
+
+function createStars() {
+  for (let i = 1; i <= 5; i++) {
+    const star = document.createElement("span");
+    star.className = "star";
+    star.innerHTML = "★";
+    star.setAttribute("data-rating", i);
+    star.addEventListener("click", handleStarClick);
+    starsContainer.appendChild(star);
+  }
+}
+
+function handleStarClick(event) {
+  const clickedRating = parseInt(event.target.getAttribute("data-rating"));
+  selectedRating = clickedRating;
+
+  // Remove 'active' class from all stars
+  const stars = document.querySelectorAll(".star");
+  stars.forEach((star) => star.classList.remove("active"));
+
+  // Add 'active' class to selected stars
+  for (let i = 0; i < clickedRating; i++) {
+    stars[i].classList.add("active");
+  }
+
+  selectedRatingElement.textContent = `You rated ${selectedRating} stars.`;
+}
+
+// Initialize the stars
+createStars();
+
+document.addEventListener("mousemove", (e) => {
+  const cursor = document.querySelector(".cursor");
+  cursor.style.left = `${e.clientX}px`;
+  cursor.style.top = `${e.clientY}px`;
+});
+
+document.addEventListener("mousedown", () => {
+  const cursor = document.querySelector(".cursor");
+  cursor.style.width = "40px";
+  cursor.style.height = "40px";
+});
+
+document.addEventListener("mouseup", () => {
+  const cursor = document.querySelector(".cursor");
+  cursor.style.width = "60px";
+  cursor.style.height = "60px";
+});

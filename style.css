@@ -7,11 +7,25 @@ body {
 
 }
 
+.cursor {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-color: transparent;
+    border: 2px solid #ffcc00;
+    border-radius: 50%;
+    pointer-events: none;
+    /* Ensure the cursor doesn't interfere with clicks */
+    transform: translate(-50%, -50%);
+    transition: width 0.2s, height 0.2s;
+    mix-blend-mode: difference;
+    /* Optional: Makes the circle more visible */
+}
+
 .div-1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* Center horizontally */
     justify-content: center;
     height: 100vh;
 }
@@ -29,6 +43,48 @@ h2 {
     font-size: 1.5em;
     margin: 0;
     /* Remove default margin */
+}
+
+/* Container for time buttons and sound switch */
+.filter {
+    margin: 20px 0 0 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 60%;
+}
+
+.filter .time-container {
+    display: flex;
+    align-items: left;
+}
+
+.filter .switch-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.filter .switch-container p {
+    margin-right: 20px;
+}
+
+.switches {
+    width: 200px;
+    padding: 5px;
+    height: 2em;
+    font-size: 1em;
+    border: 1px solid #ffcc00;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    outline: none;
+    transition: border-color 0.3s, background-color 0.3s, color 0.3s;
+}
+
+.switches:focus {
+    border-color: #ffcc00;
+    background-color: #444;
+    color: #fff;
 }
 
 /* Basic styling for time buttons */
@@ -84,7 +140,6 @@ h2 {
 #random-text {
     width: 60%;
     margin: 20px 0;
-    /* Add margin to paragraph */
 }
 
 .correct {
@@ -94,6 +149,7 @@ h2 {
 .wrong {
     color: crimson;
 }
+
 
 textarea {
     width: calc(60% - 20px);
@@ -143,20 +199,28 @@ h1,
 h2,
 p,
 .seconds,
-textarea,
-.playground {
+textarea {
     animation: fadeIn 1s ease-out;
 }
 
 #restart {
     display: none;
-    color: #ffcc00;
+    color: #fff;
     background-color: transparent;
-    border: none;
-    margin: 5px;
-    text-decoration: underline;
     cursor: pointer;
     font-size: 18px;
+    font-weight: bold;
+    background-color: #ffcc00;
+    border: 2px solid #ffcc00;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.stats-container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 20px;
 }
 
 .stats {
@@ -195,4 +259,153 @@ textarea,
 .stats #wrong {
     color: #ff6666;
     /* Light red for wrong */
+}
+
+
+#colorlib-aside {
+    width: 25%;
+}
+
+#colorlib-aside {
+    padding-top: 3em;
+    padding-bottom: 40px;
+    padding-left: 2em;
+    padding-right: 2em;
+    width: 25%;
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    overflow-y: hidden;
+    z-index: 1001;
+    background: url(aside.png) no-repeat right top #000;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.div-1 {
+    width: 80%;
+    float: right;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+/* Improved Sidebar Styling */
+#colorlib-aside {
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 20%;
+    overflow-y: auto;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+#colorlib-aside h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Main Menu Styling */
+#colorlib-main-menu ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: disc;
+}
+
+#colorlib-main-menu li {
+    margin: 0 0 10px 0;
+}
+
+#colorlib-main-menu a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    position: relative;
+    padding: 10px 0;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+#colorlib-main-menu a:hover {
+    color: #f3c623;
+}
+
+/* Footer Styling */
+#colorlib-aside .colorlib-footer {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    padding: 0 20px;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.361);
+}
+
+#colorlib-aside .colorlib-footer h3 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: "Poppins", Arial, sans-serif;
+    text-transform: uppercase;
+}
+
+#colorlib-aside .colorlib-footer h3 span {
+    color: #fff;
+}
+
+.pfooter {
+    color: #5b5b5b;
+}
+
+.pfooter a {
+    color: #fff;
+}
+
+/* Subscribe Form Styling */
+.colorlib-subscribe-form {
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+}
+
+.stars {
+    display: flex;
+    justify-content: left;
+}
+
+.star {
+    cursor: pointer;
+    font-size: 34px;
+    margin: 0 5px;
+    transition: color 0.3s ease;
+}
+
+.star:first-child {
+    margin: 0 5px 0 0;
+}
+
+.star:hover {
+    color: #f3c623;
+}
+
+.star:hover,
+.star.active {
+    color: gold;
 }

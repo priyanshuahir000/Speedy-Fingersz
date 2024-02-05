@@ -9,25 +9,79 @@
 </head>
 
 <body>
+    <div class="cursor"></div>
+    <aside id="colorlib-aside" role="complementary" class="js-fullheight">
 
-    <div class="div-1">
         <h1>Speedy Fingersz</h1>
+        </h1>
+        <nav id="colorlib-main-menu" role="navigation">
+            <ul>
+                <li><a href="https://medium.com/@priyanshuahir01/top-10-tips-for-skyrocketing-your-typing-speed-01a293efc065"
+                        target="_blank">Top 10 Tips for Improving Your Typing Speed</a></li>
+                <li><a href="https://medium.com/@priyanshuahir01/the-crucial-role-of-touch-typing-in-programming-31417d7babdc"
+                        target="_blank">The Role of Touch Typing in Programming</a></li>
+                <li><a href="https://medium.com/@priyanshuahir01/typing-and-health-striking-a-balance-for-well-being-cbc6db74e15b"
+                        target="_blank">Typing and Health</a></li>
+                <li><a href="https://medium.com/@priyanshuahir01/the-ergonomic-imperative-unlocking-the-full-potential-of-typing-75908a8f23ee"
+                        target="_blank">The Importance of Ergonomics in Typing</a></li>
+                <li><a href="https://medium.com/@priyanshuahir01/mastering-precision-overcoming-common-typing-mistakes-with-ease-3a7ea5a665c2"
+                        target="_blank">How to Overcome Common Typing Mistakes</a></li>
+            </ul>
+        </nav>
+
+        <div class="colorlib-footer">
+            <div class="mb-4">
+                <h3>Rate My Work <span>🤗</span></h3>
+                <form action="#" class="colorlib-subscribe-form">
+                    <div class="stars" id="stars"></div>
+                    <p id="selectedRating"></p>
+                </form>
+            </div>
+            <p class="pfooter">
+                Copyright &copy;
+                <script>document.write(new Date().getFullYear());</script> All rights reserved | This project is made
+                <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
+                    target="_blank">Priyanshu Baraiya</a>
+            </p>
+        </div>
+    </aside>
+    <div class="div-1">
         <h2>Start typing</h2>
-        <p>Time:
-            <button id="seconds-15" class="time active seconds" onclick="toggleTime()">15s</button>
-            <button id="seconds-60" class="time" onclick="toggleTime()">60s</button>
-        </p>
+        <div class="filter">
+            <div class="time-container">
+                <p>Time: </p>
+                <button id="seconds-15" class="time active seconds" onclick="toggleTime()">15s</button>
+                <button id="seconds-60" class="time" onclick="toggleTime()">60s</button>
+            </div>
+            <div class="switch-container">
+                <p>Sound:</p>
+                <select class=" switches" id="switches" onclick="changeSwitch()">
+                    <option value="mxbrown" default>Mx Brown</option>
+                    <option value="mxblack">Mx Black</option>
+                    <option value="cream">Cream</option>
+                    <option value="topre">Topre</option>
+                    <option value="redink">Red Ink</option>
+                    <option value="blackink">Black Ink</option>
+                    <option value="Boxnavy">Box Navy</option>
+                    <option value="turquoise">turquoise</option>
+                </select>
+            </div>
+
+        </div>
+
         <p id="random-text"></p>
         <textarea id="textbox" placeholder="start writing...."></textarea>
-        <div class="stats">
-            <p>Speed: <span id="speed">0 WPM</span></p>
-            <p>Correct: <span id="correct">0</span></p>
-            <p>Wrong: <span id="wrong">0</span></p>
+        <div class="stats-container">
+            <div class="stats">
+                <p>Speed: <span id="speed">0 WPM</span></p>
+                <p>Correct: <span id="correct">0</span></p>
+                <p>Wrong: <span id="wrong">0</span></p>
+            </div>
+            <button id="restart" onclick="restart()">Restart</button>
         </div>
-        <button id="restart" onclick="restart()">Restart</button>
+
     </div>
-    </div>
-    <script src=" script.js"></script>
+    <script src="script.js"></script>
 
 </body>
 
