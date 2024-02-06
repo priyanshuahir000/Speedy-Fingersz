@@ -12,8 +12,10 @@
 <body>
     <aside id="speedy-aside" role="complementary" class="js-fullheight">
 
-        <h1>Speedy Fingersz</h1>
-        </h1>
+        <a href=".">
+            <h1>Speedy fingersz</h1>
+        </a>
+
         <nav id="speedy-main-menu" role="navigation">
             <ul>
                 <li><a href="https://medium.com/@priyanshuahir01/top-10-tips-for-skyrocketing-your-typing-speed-01a293efc065"
@@ -32,7 +34,7 @@
         <div class="speedy-footer">
             <div class="mb-4">
                 <h3>Rate My Work <span>🤗</span></h3>
-                <form class="speedy-rating-form" netlify>
+                <form class="speedy-rating-form" action="." netlify>
                     <div class="stars" id="stars"></div>
                     <input type="text" id="rating" name="rating" value="0" style="display: none;">
                     <p id="selectedRating"></p>
@@ -80,6 +82,10 @@
                 <p>Wrong: <span id="wrong">0</span></p>
             </div>
             <button id="restart" onclick="restart()">Restart</button>
+            <form id="user-data" action="." netlify>
+                <input type="text" id="wpm" value="0" style="display: none;">
+                <input type="text" id="sound" value="0" style="display: none;">
+            </form>
         </div>
 
     </div>

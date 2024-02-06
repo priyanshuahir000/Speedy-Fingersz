@@ -18,12 +18,15 @@ body {
     height: 100vh;
 }
 
+a {
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
 h1 {
     color: #ffcc00;
-
     font-size: 2em;
     margin: 0;
-
 }
 
 h2 {

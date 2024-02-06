@@ -164,6 +164,9 @@ function displaySpeed() {
 function restart() {
   document.querySelector("#restart").style.display = "none";
   location.reload();
+  document.querySelector("#wpm").value = speed.textContent;
+  document.querySelector("#sound").value = switches;
+  document.querySelector("#user-data").submit();
 }
 
 var t = new Text();
