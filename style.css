@@ -41,7 +41,7 @@ h2 {
     margin: 20px 0 0 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    width: 60%;
+    width: 80%;
 }
 
 .filter .time-container {
@@ -129,8 +129,10 @@ h2 {
 
 
 #random-text {
-    width: 60%;
+    width: 80%;
     margin: 20px 0;
+    font-size: 1.2em;
+    font-weight: bold;
 }
 
 .correct {
@@ -143,14 +145,12 @@ h2 {
 
 
 textarea {
-    width: calc(60% - 20px);
-
+    width: calc(80% - 20px);
     height: 100px;
     font-size: 1em;
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ffcc00;
-
     border-radius: 5px;
     background-color: #333;
     color: #fff;
@@ -160,7 +160,6 @@ textarea {
 
 textarea:focus {
     border-color: #ffcc00;
-
     background-color: #444;
     color: #fff;
 }
