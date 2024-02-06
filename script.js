@@ -246,6 +246,8 @@ function createStars() {
 }
 
 function handleStarClick(event) {
+  var submit_btn = document.querySelector(".submit-button");
+  var rating = document.querySelector("#rating");
   const clickedRating = parseInt(event.target.getAttribute("data-rating"));
   selectedRating = clickedRating;
 
@@ -255,42 +257,51 @@ function handleStarClick(event) {
   for (let i = 0; i < clickedRating; i++) {
     stars[i].classList.add("active");
   }
+
   switch (selectedRating) {
     case 1:
       displayMessage(
         "Oh no! I'm sorry you had a bad experience. I'll work hard to improve!"
       );
-      break;
+      rating.value = selectedRating;
+      submit_btn.innerHTML = '<button type="submit">Submit Rating</button>';
     case 2:
       displayMessage(
         "I apologize your experience wasn't perfect. Your feedback is invaluable to me!"
       );
+      rating.value = selectedRating;
+      submit_btn.innerHTML = '<button type="submit">Submit Rating</button>';
       break;
     case 3:
       displayMessage(
         "Thank you for your feedback. I'll strive to make it even better next time!"
       );
+      rating.value = selectedRating;
+      submit_btn.innerHTML = '<button type="submit">Submit Rating</button>';
       break;
     case 4:
       displayMessage(
         "Thanks for your positive feedback! I'm glad you enjoyed your experience!"
       );
+      rating.value = selectedRating;
+      submit_btn.innerHTML = '<button type="submit">Submit Rating</button>';
       break;
     case 5:
       displayMessage(
         "Wow! Thank you so much for the glowing review! Your support means the world to me!"
       );
+      rating.value = selectedRating;
+      submit_btn.innerHTML = '<button type="submit">Submit Rating</button>';
       break;
     default:
       displayMessage(
         "Hmm... It seems there was an issue. Please select a rating between 1 and 5."
       );
   }
-
 }
 
-function displayMessage(text){
-  selectedRatingElement.textContent  = text;
+function displayMessage(text) {
+  selectedRatingElement.textContent = text;
 }
 
 createStars();

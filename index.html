@@ -32,10 +32,12 @@
         <div class="speedy-footer">
             <div class="mb-4">
                 <h3>Rate My Work <span>🤗</span></h3>
-                <form action="#" class="speedy-subscribe-form">
+                <form class="speedy-rating-form" netlify>
                     <div class="stars" id="stars"></div>
+                    <input type="hidden" id="rating" value="0">
+                    <p id="selectedRating"></p>
+                    <div class="submit-button"></div>
                 </form>
-                <p id="selectedRating"></p>
             </div>
             <p class="pfooter">
                 Copyright &copy;
