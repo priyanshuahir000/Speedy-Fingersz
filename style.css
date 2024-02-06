@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&family=Titan+One&display=swap');
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #000;
@@ -7,20 +9,6 @@ body {
 
 }
 
-.cursor {
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    background-color: transparent;
-    border: 2px solid #ffcc00;
-    border-radius: 50%;
-    pointer-events: none;
-    /* Ensure the cursor doesn't interfere with clicks */
-    transform: translate(-50%, -50%);
-    transition: width 0.2s, height 0.2s;
-    mix-blend-mode: difference;
-    /* Optional: Makes the circle more visible */
-}
 
 .div-1 {
     display: flex;
@@ -32,20 +20,20 @@ body {
 
 h1 {
     color: #ffcc00;
-    /* Yellow */
+
     font-size: 2em;
     margin: 0;
-    /* Remove default margin */
+
 }
 
 h2 {
     color: #fff;
     font-size: 1.5em;
     margin: 0;
-    /* Remove default margin */
+
 }
 
-/* Container for time buttons and sound switch */
+
 .filter {
     margin: 20px 0 0 0;
     display: grid;
@@ -87,7 +75,7 @@ h2 {
     color: #fff;
 }
 
-/* Basic styling for time buttons */
+
 .time {
     margin: 5px;
     font-size: 16px;
@@ -99,41 +87,41 @@ h2 {
     transition: background-color 0.3s, color 0.3s;
 }
 
-/* Styling for active time button */
+
 .time.active {
     background-color: transparent;
     color: #ffcc00;
 }
 
-/* Animation for time buttons */
+
 .time:hover {
     background-color: transparent;
     color: #ffcc00;
 }
 
-/* Animation for active time button */
+
 .time.active:hover {
     background-color: transparent;
     color: #d1a703;
 }
 
-/* Animation for button press effect */
+
 .time:active,
 .time.active:active {
     transform: scale(0.95);
 }
 
-/* Add styles for disabled time buttons */
+
 .disable-hover {
     cursor: not-allowed;
 }
 
-/* Styling for disabled time button */
+
 .disable-hover:hover {
     color: inherit;
     cursor: not-allowed;
 
-    /* Preserve the original text color on hover */
+
 }
 
 
@@ -153,13 +141,13 @@ h2 {
 
 textarea {
     width: calc(60% - 20px);
-    /* Adjust width to match paragraph */
+
     height: 100px;
     font-size: 1em;
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ffcc00;
-    /* Yellow */
+
     border-radius: 5px;
     background-color: #333;
     color: #fff;
@@ -169,7 +157,7 @@ textarea {
 
 textarea:focus {
     border-color: #ffcc00;
-    /* Yellow */
+
     background-color: #444;
     color: #fff;
 }
@@ -181,10 +169,10 @@ p {
 .seconds {
     font-weight: bold;
     color: #e44d26;
-    /* Reddish-Orange */
+
 }
 
-/* Optional: Add a little animation */
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -253,20 +241,20 @@ textarea {
 
 .stats #correct {
     color: #66ff66;
-    /* Light green for correct */
+
 }
 
 .stats #wrong {
     color: #ff6666;
-    /* Light red for wrong */
+
 }
 
 
-#colorlib-aside {
+#speedy-aside {
     width: 25%;
 }
 
-#colorlib-aside {
+#speedy-aside {
     padding-top: 3em;
     padding-bottom: 40px;
     padding-left: 2em;
@@ -297,8 +285,8 @@ textarea {
     transition: all 0.5s ease;
 }
 
-/* Improved Sidebar Styling */
-#colorlib-aside {
+
+#speedy-aside {
     background-color: #000;
     color: #fff;
     padding: 20px;
@@ -312,24 +300,24 @@ textarea {
     z-index: 1000;
 }
 
-#colorlib-aside h1 {
+#speedy-aside h1 {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
 }
 
-/* Main Menu Styling */
-#colorlib-main-menu ul {
+
+#speedy-main-menu ul {
     padding: 0;
     margin: 0;
     list-style-type: disc;
 }
 
-#colorlib-main-menu li {
+#speedy-main-menu li {
     margin: 0 0 10px 0;
 }
 
-#colorlib-main-menu a {
+#speedy-main-menu a {
     color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
     position: relative;
@@ -341,12 +329,12 @@ textarea {
     transition: color 0.3s ease;
 }
 
-#colorlib-main-menu a:hover {
+#speedy-main-menu a:hover {
     color: #f3c623;
 }
 
-/* Footer Styling */
-#colorlib-aside .colorlib-footer {
+
+#speedy-aside .speedy-footer {
     position: absolute;
     bottom: 20px;
     left: 0;
@@ -357,7 +345,7 @@ textarea {
     color: rgba(255, 255, 255, 0.361);
 }
 
-#colorlib-aside .colorlib-footer h3 {
+#speedy-aside .speedy-footer h3 {
     margin: 0;
     font-size: 14px;
     font-weight: 600;
@@ -366,7 +354,7 @@ textarea {
     text-transform: uppercase;
 }
 
-#colorlib-aside .colorlib-footer h3 span {
+#speedy-aside .speedy-footer h3 span {
     color: #fff;
 }
 
@@ -378,8 +366,8 @@ textarea {
     color: #fff;
 }
 
-/* Subscribe Form Styling */
-.colorlib-subscribe-form {
+
+.speedy-subscribe-form {
     display: flex;
     flex-direction: row;
     align-items: left;

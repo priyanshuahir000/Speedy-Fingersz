@@ -48,6 +48,7 @@ document
     enter.preload = "auto";
     space.preload = "auto";
     key.preload = "auto";
+
     switch (event.key) {
       case "Backspace":
         backSpace.currentTime = 0;
@@ -65,10 +66,10 @@ document
   });
 
 document.querySelector("#textbox").addEventListener("keyup", function (event) {
-  backSpace.preload = "auto";
-  enter.preload = "auto";
-  space.preload = "auto";
-  key.preload = "auto";
+  backSpace_release.preload = "auto";
+  enter_release.preload = "auto";
+  space_release.preload = "auto";
+  key_release.preload = "auto";
   switch (event.key) {
     case "Backspace":
       backSpace_release.currentTime = 0;
@@ -248,35 +249,48 @@ function handleStarClick(event) {
   const clickedRating = parseInt(event.target.getAttribute("data-rating"));
   selectedRating = clickedRating;
 
-  // Remove 'active' class from all stars
   const stars = document.querySelectorAll(".star");
   stars.forEach((star) => star.classList.remove("active"));
 
-  // Add 'active' class to selected stars
   for (let i = 0; i < clickedRating; i++) {
     stars[i].classList.add("active");
   }
+  switch (selectedRating) {
+    case 1:
+      displayMessage(
+        "Oh no! I'm sorry you had a bad experience. I'll work hard to improve!"
+      );
+      break;
+    case 2:
+      displayMessage(
+        "I apologize your experience wasn't perfect. Your feedback is invaluable to me!"
+      );
+      break;
+    case 3:
+      displayMessage(
+        "Thank you for your feedback. I'll strive to make it even better next time!"
+      );
+      break;
+    case 4:
+      displayMessage(
+        "Thanks for your positive feedback! I'm glad you enjoyed your experience!"
+      );
+      break;
+    case 5:
+      displayMessage(
+        "Wow! Thank you so much for the glowing review! Your support means the world to me!"
+      );
+      break;
+    default:
+      displayMessage(
+        "Hmm... It seems there was an issue. Please select a rating between 1 and 5."
+      );
+  }
 
-  selectedRatingElement.textContent = `You rated ${selectedRating} stars.`;
 }
 
-// Initialize the stars
+function displayMessage(text){
+  selectedRatingElement.textContent  = text;
+}
+
 createStars();
-
-document.addEventListener("mousemove", (e) => {
-  const cursor = document.querySelector(".cursor");
-  cursor.style.left = `${e.clientX}px`;
-  cursor.style.top = `${e.clientY}px`;
-});
-
-document.addEventListener("mousedown", () => {
-  const cursor = document.querySelector(".cursor");
-  cursor.style.width = "40px";
-  cursor.style.height = "40px";
-});
-
-document.addEventListener("mouseup", () => {
-  const cursor = document.querySelector(".cursor");
-  cursor.style.width = "60px";
-  cursor.style.height = "60px";
-});
