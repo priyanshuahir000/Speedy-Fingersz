@@ -181,6 +181,7 @@ var cursor = 0;
 var correct = 0;
 var wrong = 0;
 document.querySelector("#textbox").addEventListener("input", function (event) {
+  document.addEventListener("keydown", function (event) {});
   if (
     event.inputType === "deleteContentBackward" ||
     event.inputType === "deleteContentForward"
@@ -306,5 +307,21 @@ function handleStarClick(event) {
 function displayMessage(text) {
   selectedRatingElement.textContent = text;
 }
+
+let keysPressed = {};
+
+document.addEventListener("keydown", function (event) {
+  keysPressed[event.key] = true;
+
+  if (keysPressed["Tab"] && keysPressed["Enter"]) {
+    restart();
+  } else if (event.key === "Tab") {
+    event.preventDefault();
+  }
+});
+
+document.addEventListener("keyup", function (event) {
+  delete keysPressed[event.key];
+});
 
 createStars();
