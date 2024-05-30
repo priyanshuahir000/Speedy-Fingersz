@@ -9,6 +9,10 @@ Welcome to Speedy Fingersz, a typing speed test web application! This applicatio
 - Restart Functionality: Restart the typing test at any time to try again and improve your score.
 - Rating System: Rate your experience with the web app and provide valuable feedback.
 
+## Screenshot
+
+![speedy fingerz scrrenshot](https://github.com/priyanshuahir000/Speedy-Fingersz/blob/main/Images/screenshot.png)
+### Live Demo: [Speedy Fingerz](https://speedyfingersz.netlify.app/)
 ## Usage
 1. Start Typing: Click on the text area and begin typing the passage displayed on the screen.
 2. Monitor Stats: Keep an eye on your typing speed, correct and wrong keystrokes, and overall accuracy displayed in the stats section.
